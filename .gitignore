@@ -1,0 +1,7 @@
+*.o
+*.exe
+
+include/SDL3/
+lib/
+
+SDL3.dll
