@@ -3,7 +3,7 @@ CXXFLAGS = -std=c++23 -Iinclude
 LDFLAGS = -Llib -lSDL3
 
 TARGET = main
-SRCS = main.cpp
+SRCS = main.cpp include/Game/gameLoop.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 $(TARGET): $(OBJS)
