@@ -20,6 +20,18 @@ void gameLoop::cleanup()
   SDL_Quit();
 }
 
+void gameLoop::run()
+{
+  while(isActive()) {
+    render();
+    handleInput();
+  }
+
+}
+
+bool gameLoop::isActive() {return active;}
+void gameLoop::setActive(bool val) {active = val;}
+
 void gameLoop::setBG(const SDL_Color& color) noexcept { BG = color; }
 
 void gameLoop::render()
@@ -27,7 +39,7 @@ void gameLoop::render()
   SDL_SetRenderDrawColor(Renderer, BG.r, BG.g, BG.b, BG.a);
   SDL_RenderClear(Renderer);
   
-  mainLoop();  
+  this->draw();  // NOT WORKING?
   
   SDL_RenderPresent(Renderer);
 }
@@ -44,7 +56,7 @@ void gameLoop::handleInput()
 {
   SDL_Event e;
   while (SDL_PollEvent(&e)) { 
-    if (e.type == SDL_EVENT_QUIT) active = false;
+    if (e.type == SDL_EVENT_QUIT) setActive(false);
     if (e.type == SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED) SDL_GetWindowSizeInPixels(Window, &w, &h);
   }
 }

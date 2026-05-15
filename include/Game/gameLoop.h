@@ -11,12 +11,18 @@ class gameLoop
     ~gameLoop();
     
     bool init(const char*, bool);
+    void run();
+
+    bool isActive();
+    void setActive(bool);
+
     void setBG(const SDL_Color&) noexcept;
-    virtual void mainLoop() = 0;
+
+    virtual void draw() = 0;
     
     float getDelta() noexcept;
   
-  private:
+  protected:
     bool active{};
     int w{}, h{};
     SDL_Color BG{};
@@ -27,6 +33,5 @@ class gameLoop
     void render();
     void handleInput();
 };
-
 
 #endif
