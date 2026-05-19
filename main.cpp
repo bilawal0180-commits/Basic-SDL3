@@ -19,7 +19,6 @@ class MyGame : public gameLoop
       if (_keyboard[SDL_SCANCODE_LEFT])   box.x = 0;
       if (_keyboard[SDL_SCANCODE_UP])     box.y = 0;
       if (_keyboard[SDL_SCANCODE_DOWN])   box.y = h - 50;
-      
     }
 };
 
